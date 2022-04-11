@@ -1,5 +1,5 @@
 ---
- - hosts: "{{ group }}"
+ - hosts: all
    become: yes
    vars_files:
      - '{{ var_file_path }}'
