@@ -1,13 +1,14 @@
 ---
  - hosts: "{{ group }}"
    become : yes
+   remote_user: wt-user
    vars_files:
     - "{{ var_file_path }}"
    
    tasks:
 
    - name: Update nodejs package
-     shell: curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+     shell: curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
    - name: Install nodejs
      apt:
@@ -41,10 +42,10 @@
          OKTA_ORG_URL={{ okta_org_url }}
          OKTA_CLIENT_ID={{ okta_client_id }}
          OKTA_CLIENT_SECRET={{ okta_client_secret }}
+         
    - name: Database initialization
      shell: npm run initdb
-     async: 30
-     poll: 0
+     run_once: true
      args:
        chdir: '{{ deploy_directory }}/'
        
@@ -52,11 +53,11 @@
    - name: Install pm2
      shell: npm install pm2 -g
 
-   - name: Clear pm2 process
+   - name: Clear pm2
      shell: pm2 delete all
      ignore_errors: yes
 
-   - name: Run application
+   - name: Run app
      shell: pm2 start npm -- run dev && pm2 save && pm2 startup
      args:
        chdir: '{{ deploy_directory }}/'
