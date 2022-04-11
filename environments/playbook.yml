@@ -3,7 +3,7 @@
    become: yes
    remote_user: wt-user
    vars_files:
-     - "{{ var_file_path }}"
+     - staging/group_vars/staging.yml
 
    tasks:
    - name: Update nodejs package
