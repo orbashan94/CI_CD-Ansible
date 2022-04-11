@@ -23,9 +23,6 @@
      args:
        chdir: '{{ deploy_directory }}/'    
 
-   - name: Get public IP
-     community.general.ipify_facts:
-
    - name: Create environment variables file
      copy:
        dest: "{{ deploy_directory }}/.env"
