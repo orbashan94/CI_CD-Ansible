@@ -60,7 +60,3 @@
      shell: pm2 start npm -- run dev && pm2 save && pm2 startup
      args:
        chdir: '{{ deploy_directory }}/'
-
-   - name: Reboot
-     reboot:
-     
