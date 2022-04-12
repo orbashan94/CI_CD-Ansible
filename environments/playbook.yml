@@ -16,7 +16,7 @@
        state: present
        
    - name: install nodemon
-     command: "npm install --save-dev nodemon@2"
+     command: "npm install -g nodemon"
      args:
        chdir: '{{ deploy_directory }}/'
 
