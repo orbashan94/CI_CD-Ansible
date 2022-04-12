@@ -14,16 +14,22 @@
      apt:
        name: nodejs
        state: present
+       
+   - name: install nodemon
+      become: yes
+      command: "npm install --save-dev nodemon@2"
+      args:
+        chdir: '{{ deploy_directory }}/'
 
-#    - name: Npm initialization
-#      shell: npm init -y
-#      args:
-#        chdir: '{{ deploy_directory }}/'
+   - name: Npm initialization
+     shell: npm init -y
+     args:
+       chdir: '{{ deploy_directory }}/'
 
-#    - name: Install node dependencies
-#      shell: npm install
-#      args:
-#        chdir: '{{ deploy_directory }}/'
+   - name: Install node dependencies
+     shell: npm install
+     args:
+       chdir: '{{ deploy_directory }}/'
 
    - name: Create environment variables file
      copy:
