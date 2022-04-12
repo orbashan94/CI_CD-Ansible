@@ -15,15 +15,15 @@
        name: nodejs
        state: present
 
-   - name: Npm initialization
-     shell: npm init -y
-     args:
-       chdir: '{{ deploy_directory }}/'
+#    - name: Npm initialization
+#      shell: npm init -y
+#      args:
+#        chdir: '{{ deploy_directory }}/'
 
-   - name: Install node dependencies
-     shell: npm install
-     args:
-       chdir: '{{ deploy_directory }}/'
+#    - name: Install node dependencies
+#      shell: npm install
+#      args:
+#        chdir: '{{ deploy_directory }}/'
 
    - name: Create environment variables file
      copy:
