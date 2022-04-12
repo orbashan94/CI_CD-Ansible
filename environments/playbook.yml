@@ -16,9 +16,9 @@
        state: present
        
    - name: install nodemon
-      command: "npm install --save-dev nodemon@2"
-      args:
-        chdir: '{{ deploy_directory }}/'
+     command: "npm install --save-dev nodemon@2"
+     args:
+       chdir: '{{ deploy_directory }}/'
 
    - name: Npm initialization
      shell: npm init -y
